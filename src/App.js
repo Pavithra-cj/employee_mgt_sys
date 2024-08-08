@@ -1,12 +1,24 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import AddEmployee from './components/AddEmployee';
+import Navbar from './components/Navbar';
+import EmployeeList from './components/EmployeeList';
+import UpdateEmployee from './components/UpdateEmployee';
 
 function App() {
   return (
-    <div className="bg-gray-800">
-      <div className="h-16 flex items-center">
-        <p>Employee Management System</p>
-      </div>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<EmployeeList />} />
+          <Route index element={<EmployeeList />} />
+          <Route path="/employeeList" element={<EmployeeList />} />
+          <Route path="/addEmployee" element={<AddEmployee />} />
+          <Route path="/editEmployee/:id" element={<UpdateEmployee/>} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
